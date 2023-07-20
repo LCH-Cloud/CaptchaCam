@@ -75,7 +75,7 @@ jobs:
         shell: powershell
         run: |
           cd ./target/x86_64-pc-windows-msvc/release/
-          rename-item -path ./CaptchaCam.exe -newname "CaptchaCam-${{ env.VERSION }}-x86_64-pc-windows-msvc.exe"
+          rename-item -path ./CaptchaCam.exe -newname "CaptchaCam-x86_64-pc-windows-msvc.exe"
 
       - name: Upload Release Asset
         id: upload-release-asset
