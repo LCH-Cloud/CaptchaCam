@@ -1,20 +1,15 @@
 [package]
 name = "captchacam"
-version = "1.1.0"
+version = "1.1.1"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 chrono = "0.4.26"
-clap = { version = "4.3.17", features = ["derive"] }
-dotenvy = "0.15.7"
+clap = { version = "4.3.4", features = ["derive"] }
 image = "0.24.6"
+nokhwa = { version = "0.10.4", features = ["input-native"] }
 self_update = { version = "0.37.0", features = ["rustls"] }
 tracing = "0.1.37"
 tracing-subscriber = "0.3.17"
-
-[dependencies.nokhwa]
-git = "https://github.com/l1npengtul/nokhwa.git"
-rev = "ea971242a888987222375189fb78c84fa85e5a4e"
-features = ["input-native"]
