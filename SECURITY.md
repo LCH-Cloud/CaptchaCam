@@ -13,11 +13,15 @@ This section provides information about which versions of our project are curren
 
 In this section, we provide guidelines on how to report a vulnerability.
 
-To report a vulnerability, please use GitHub Security Advisories in our GitHub repository. This allows us to assess the vulnerability, discuss it and, if necessary, correct it in a private space before a public disclosure. 
+To report a vulnerability, you have two options:
 
-Once the vulnerability is reported, you can expect an initial assessment and response within 3-5 business days. We will provide regular updates on our progress until the issue is resolved. 
+1. Please use [GitHub Security Advisories](https://github.com/LCH-Cloud/CaptchaCam/security/advisories) in our GitHub repository. This allows us to assess the vulnerability, discuss it, and if necessary, correct it in a private space before a public disclosure.
 
-Please remember to provide as much information as possible to help us understand the nature and severity of the vulnerability. 
+2. Alternatively, you can directly email us at security@lchcloud.de with the relevant details.
+
+Once the vulnerability is reported, you can expect an initial assessment and response within 3-5 business days. We will provide regular updates on our progress until the issue is resolved.
+
+Please remember to provide as much information as possible to help us understand the nature and severity of the vulnerability.
 
 If the vulnerability report is declined, we will provide a detailed explanation.
 
