@@ -70,6 +70,9 @@ jobs:
           release_name: Release ${{ env.VERSION }}
           draft: false
           prerelease: false
+          
+      - name: Rename the file
+        run: mv ./target/x86_64-pc-windows-msvc/release/CaptchaCam.exe ./target/x86_64-pc-windows-msvc/release/CaptchaCam-${{ env.VERSION }}-x86_64-pc-windows-msvc.exe
 
       - name: Upload Release Asset
         id: upload-release-asset
@@ -81,3 +84,4 @@ jobs:
           asset_path: ./target/x86_64-pc-windows-msvc/release/CaptchaCam-${{ env.VERSION }}-x86_64-pc-windows-msvc.exe
           asset_name: CaptchaCam-${{ env.VERSION }}-x86_64-pc-windows-msvc.exe
           asset_content_type: application/octet-stream
+
