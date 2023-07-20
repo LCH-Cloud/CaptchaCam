@@ -2,8 +2,8 @@ name: Release
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - '*'
 
 jobs:
   build-and-release:
@@ -59,8 +59,6 @@ jobs:
         run: |
           $version = ((Get-Content -Path .\Cargo.toml -Raw) -split "`n") -match "^version" | %{ $_ -replace '^version = "', '' } | %{ $_ -replace '"', '' }
           echo "VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-
-
 
       - name: Create Release
         id: create_release
