@@ -61,10 +61,10 @@ jobs:
           echo "VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Create GNU zip
-        run: Compress-Archive -Path ./target/x86_64-pc-windows-gnu/release/CaptchaCam.exe -DestinationPath ./target/x86_64-pc-windows-gnu/release/CaptchaCam-${{ env.VERSION }}-pc-windows-gnu.zip
+        run: Compress-Archive -Path ./target/x86_64-pc-windows-gnu/release/captchacam.exe -DestinationPath ./target/x86_64-pc-windows-gnu/release/CaptchaCam-${{ env.VERSION }}-pc-windows-gnu.zip
 
       - name: Create MSVC zip
-        run: Compress-Archive -Path ./target/x86_64-pc-windows-msvc/release/CaptchaCam.exe -DestinationPath ./target/x86_64-pc-windows-msvc/release/CaptchaCam-${{ env.VERSION }}-pc-windows-msvc.zip
+        run: Compress-Archive -Path ./target/x86_64-pc-windows-msvc/release/captchacam.exe -DestinationPath ./target/x86_64-pc-windows-msvc/release/CaptchaCam-${{ env.VERSION }}-pc-windows-msvc.zip
 
       - name: Create Release
         id: create_release
