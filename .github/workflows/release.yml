@@ -81,5 +81,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./target/x86_64-pc-windows-msvc/release/CaptchaCam.exe
-          asset_name: CaptchaCam.exe
+          asset_name: CaptchaCam-${{ env.VERSION }}-x86_64-pc-windows-msvc.exe
           asset_content_type: application/octet-stream
