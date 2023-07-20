@@ -21,7 +21,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
-          target: x86_64-pc-windows-gnu
+          target: x86_64-pc-windows-msvc
           profile: minimal
           override: true
 
@@ -45,7 +45,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: build
-          args: --release --target=x86_64-pc-windows-gnu
+          args: --release --target=x86_64-pc-windows-msvc
 
       - name: Get version
         id: get_version
@@ -69,6 +69,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./target/x86_64-pc-windows-gnu/release/CaptchaCam.exe
+          asset_path: ./target/x86_64-pc-windows-msvc/release/CaptchaCam.exe
           asset_name: CaptchaCam.exe
           asset_content_type: application/octet-stream
