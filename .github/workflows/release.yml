@@ -54,12 +54,12 @@ jobs:
           command: build
           args: --release --target=x86_64-pc-windows-msvc
 
-      - name: Extract Version
-        id: extract_version
+      - name: Get version
+        id: get_version
         run: |
-          echo "::set-output name=VERSION::$(grep '^version' ./Cargo.toml | head -1 | awk '{print $3}' | tr -d \")"
-      - name: Set Version
-        run: echo "VERSION=${{ steps.extract_version.outputs.VERSION }}" >> $GITHUB_ENV
+          $version = ((Get-Content -Path .\Cargo.toml -Raw) -split "`n") -match "^version" | %{ $_ -replace '^version = "', '' } | %{ $_ -replace '"', '' }
+          echo "VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
 
 
       - name: Create Release
