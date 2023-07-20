@@ -57,8 +57,6 @@ struct Args {
 }
 
 fn main() {
-    dotenvy::dotenv().ok();
-
     // We start by capturing the start time for overall performance monitoring.
     let total_start = Instant::now();
     // Parse the command line arguments into an Args struct.
@@ -216,7 +214,6 @@ fn update() -> Result<(), Box<dyn ::std::error::Error>> {
         .show_download_progress(true)
         .show_output(false)
         .no_confirm(true)
-        .auth_token(std::env::var("DOWNLOAD_AUTH_TOKEN").unwrap().as_str())
         .current_version(self_update::cargo_crate_version!())
         .build()?
         .update()?;
