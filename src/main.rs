@@ -46,9 +46,19 @@ struct Args {
     /// Enables debug mode. [default: false]
     #[structopt(long, default_value = "false")]
     debug: bool,
+
+    /// Updates the program. [default: false]
+    #[structopt(long, default_value = "false")]
+    update: bool,
+
+    /// Updates the program. [default: false]
+    #[structopt(long, default_value = "false")]
+    selfupdate: bool,
 }
 
 fn main() {
+    dotenvy::dotenv().ok();
+
     // We start by capturing the start time for overall performance monitoring.
     let total_start = Instant::now();
     // Parse the command line arguments into an Args struct.
@@ -61,6 +71,7 @@ fn main() {
     let devlist = args.devlist;
     let quiet = args.quiet;
     let debug = args.debug;
+    let selfupdate = args.selfupdate;
     let mut index = CameraIndex::Index(devnum);
 
     // Initialize the tracing subscriber for logging, unless it's turned off by 'quiet' or 'debug' flag.
@@ -73,6 +84,19 @@ fn main() {
             .with_max_level(tracing::Level::DEBUG)
             .with_ansi(false)
             .init()
+    }
+
+    if args.update {
+        if let Err(e) = update() {
+            error!("Failed to update: {:?}", e);
+        }
+        return;
+    }
+
+    if selfupdate {
+        if let Err(e) = update() {
+            error!("Failed to update: {:?}", e);
+        }
     }
 
     // Query available cameras and handle any error.
@@ -182,4 +206,21 @@ fn main() {
     info!("Camera: {}", camera.info().human_name());
     info!("Resolution: {}x{}", decoded.width(), decoded.height());
     info!("Image: {}", format!("{}.png", filename));
+}
+
+fn update() -> Result<(), Box<dyn ::std::error::Error>> {
+    let status = self_update::backends::github::Update::configure()
+        .repo_owner("LCH-Cloud")
+        .repo_name("CaptchaCam")
+        .bin_name("github")
+        .show_download_progress(true)
+        .show_output(false)
+        .no_confirm(true)
+        .auth_token(std::env::var("DOWNLOAD_AUTH_TOKEN").unwrap().as_str())
+        .current_version(self_update::cargo_crate_version!())
+        .build()?
+        .update()?;
+
+    println!("Updated to Version: {}!", status.version());
+    Ok(())
 }
