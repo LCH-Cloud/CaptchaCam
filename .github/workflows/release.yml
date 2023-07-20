@@ -54,9 +54,13 @@ jobs:
           command: build
           args: --release --target=x86_64-pc-windows-msvc
 
-      - name: Get version
-        id: get_version
-        run: echo "VERSION=$(grep '^version' ./Cargo.toml | head -1 | awk '{print $3}' | tr -d \")" >> $GITHUB_ENV
+      - name: Extract Version
+        id: extract_version
+        run: |
+          echo "::set-output name=VERSION::$(grep '^version' ./Cargo.toml | head -1 | awk '{print $3}' | tr -d \")"
+      - name: Set Version
+        run: echo "VERSION=${{ steps.extract_version.outputs.VERSION }}" >> $GITHUB_ENV
+
 
       - name: Create Release
         id: create_release
