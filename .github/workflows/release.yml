@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         shell: powershell
         run: choco install nasm
-      
+
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
         with:
@@ -56,7 +56,9 @@ jobs:
 
       - name: Get version
         id: get_version
-        run: echo "VERSION=$(cargo pkgid | cut -d# -f2)" >> $GITHUB_ENV
+        run: |
+          $version = ((Get-Content -Path .\Cargo.toml -Raw) -split "`n") -match "^version" | %{ $_ -replace '^version = "', '' } | %{ $_ -replace '"', '' }
+          echo "VERSION=$version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Create Release
         id: create_release
