@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-and-release:
@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Install NASM
+        run: sudo apt-get install -y nasm
 
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
@@ -49,5 +52,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./target/x86_64-pc-windows-gnu/release/your_binary_name.exe
-          asset_name: your_binary_name.exe
+          asset_name: CaptchaCam.exe
           asset_content_type: application/octet-stream
