@@ -62,7 +62,7 @@
     <Product
         Id='*'
         Name='captchacam'
-        UpgradeCode='CF0D44B4-77E3-4102-841D-877CDDACD8BB'
+        UpgradeCode='86238B59-1B9A-4194-A55B-ED3885121774'
         Manufacturer='LCH Cloud GmbH'
         Language='1033'
         Codepage='1252'
@@ -105,7 +105,7 @@
                     </Component>
                     
                     <Directory Id='Bin' Name='bin'>
-                        <Component Id='Path' Guid='67F97584-4BC8-4578-AE54-C3B2406F1C9E' KeyPath='yes'>
+                        <Component Id='Path' Guid='78CB0BD2-A855-4756-992B-2794E7CACE02' KeyPath='yes'>
                             <Environment
                                 Id='PATH'
                                 Name='PATH'
@@ -187,7 +187,7 @@
           Disabling the EULA dialog in the installer requires commenting out
           or removing the following `WixVariable` tag
         -->
-        <WixVariable Id='WixUILicenseRtf' Value='LICENSE.md'/>
+        <WixVariable Id='WixUILicenseRtf' Value='License.rtf'/>
         
         
         <!--
