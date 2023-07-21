@@ -17,7 +17,7 @@ jobs:
         run: |
           choco install nasm
           cargo install --force cargo-wix
-          
+
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
         with:
@@ -57,7 +57,7 @@ jobs:
           args: --release --target=x86_64-pc-windows-msvc
 
       - name: Package Installer
-        run: cargo wix
+        run: cargo wix --nocapture
 
       - name: Get version
         id: get_version
