@@ -2,7 +2,7 @@
 name = "captchacam"
 version = "1.1.1"
 edition = "2021"
-authors = ["Dominik Spitzli <d.spitzli@lchcloud.de>", "LCH Cloud GmbH <contact@lchcloud.de>"]
+authors = ["LCH Cloud GmbH <contact@lchcloud.de>", "Dominik Spitzli <d.spitzli@lchcloud.de>"]
 homepage = "https://github.com/LCH-Cloud/CaptchaCam"
 license = "Apache-2.0"
 repository = "https://github.com/LCH-Cloud/CaptchaCam"
