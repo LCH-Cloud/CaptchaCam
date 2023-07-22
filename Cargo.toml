@@ -1,6 +1,6 @@
 [package]
 name = "captchacam"
-version = "1.1.1"
+version = "1.1.2"
 edition = "2021"
 authors = ["LCH Cloud GmbH <contact@lchcloud.de>", "Dominik Spitzli <d.spitzli@lchcloud.de>"]
 homepage = "https://github.com/LCH-Cloud/CaptchaCam"
