@@ -59,6 +59,9 @@ jobs:
       - name: Package Installer
         run: cargo wix --nocapture
 
+      - name: check wix
+        run: tree
+
       - name: Get version
         id: get_version
         run: |
