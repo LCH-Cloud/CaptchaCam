@@ -14,8 +14,10 @@ jobs:
 
       - name: Install dependencies
         shell: powershell
-        run: choco install nasm
-      
+        run: |
+          choco install nasm
+          cargo install --force cargo-wix
+
       - name: Setup Rust
         uses: actions-rs/toolchain@v1
         with:
@@ -54,6 +56,12 @@ jobs:
           command: build
           args: --release --target=x86_64-pc-windows-msvc
 
+      - name: Package Init
+        run: cargo wix init --eula License.rtf
+
+      - name: Package Installer
+        run: cargo wix --nocapture
+
       - name: Get version
         id: get_version
         run: |
@@ -71,8 +79,8 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload Release Asset
-        id: upload-release-asset
+      - name: Upload Release Asset (.exe)
+        id: upload-release-asset-exe
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -80,4 +88,15 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./target/x86_64-pc-windows-msvc/release/CaptchaCam.exe
           asset_name: CaptchaCam-x86_64-pc-windows-msvc.exe
+          asset_content_type: application/octet-stream
+
+      - name: Upload Release Asset (.msi)
+        id: upload-release-asset-msi
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./target/wix/CaptchaCam-x86_64-pc-windows-msvc.msi
+          asset_name: CaptchaCam-x86_64-pc-windows-msvc.msi
           asset_content_type: application/octet-stream
