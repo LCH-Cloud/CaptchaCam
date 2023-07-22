@@ -60,7 +60,7 @@ jobs:
         run: cargo wix --nocapture
 
       - name: check wix
-        run: tree
+        run: tree /f ./target/wix/
 
       - name: Get version
         id: get_version
