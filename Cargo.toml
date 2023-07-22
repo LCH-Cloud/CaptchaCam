@@ -10,7 +10,7 @@ description = "CaptchaCam is a command-line tool for controlling the camera and 
 documentation = "https://github.com/LCH-Cloud/CaptchaCam/wiki"
 license-file = "LICENSE.md"
 keywords = ["command-line-app", "camera", "camera-image", "command-line-tool", "camera-control" ]
-categories = ["graphics", "video", "photography", "cli", "utility", "command-line-tool", "command-line-utility", "commandline-tool", "commandline-utility", "commandline", "command-line", "command", "line", "commandline-tool", "command-line-tool", "commandline-utility", "command-line-utility", "commandline-tool", "command-line-tool", "commandline-utility", "command-line-utility", "commandline"]
+categories = ["command-line-utilities"]
 readme = "README.md"
 include = [
     "**/*.rs",
